@@ -1,0 +1,159 @@
+﻿<Page
+    x:Class="Aircall.ItemContacts"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Aircall"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="DarkGray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="250"/>
+            </Grid.ColumnDefinitions>
+
+            <RelativePanel Grid.Column="3" VerticalAlignment="Center"
+                           HorizontalAlignment="Right">
+                <ComboBox x:Name="FilterCombo" Header="Фильтрация" Width="200"
+                          PlaceholderText="Выберите фильтр" Margin="2,2,5,2"
+                          FontSize="11"/>
+
+            </RelativePanel>
+            
+
+            <RelativePanel Grid.Column="4" HorizontalAlignment="Right" Background="#696969">
+                <Button Name="searchButton" RelativePanel.AlignRightWithPanel="True" 
+                        Width="50" Height="50" Background="{x:Null}" Content="&#xE094;"
+                        FontFamily="Segoe MDL2 Assets" Click="searchButton_Click"/>
+                <TextBox Width="200" Height="50" RelativePanel.LeftOf="searchButton" 
+                         Padding="14" PlaceholderText="Search" BorderThickness="0.5"
+                         Name="tbxSearc" TextChanged="tbxSearc_TextChanged"/>
+            </RelativePanel>
+
+            <Button Width="40" Height="40" HorizontalAlignment="Center"
+                    VerticalAlignment="Center" Name="AddButtonPane"
+                    ToolTipService.ToolTip="Добавить" Margin="5"
+                    Style="{StaticResource IconButton}" 
+                    Content="&#xE109;" Click="AddButtonPane_Click"/>
+            <Button Width="41.5" Height="40" HorizontalAlignment="Center"
+                    VerticalAlignment="Center" Name="EditButton"
+                    ToolTipService.ToolTip="Изменить" Margin="5"
+                    Style="{StaticResource IconButton}" Click="EditButton_Click"
+                    Content="&#xE104;" Grid.Column="1"/>
+            <Button Width="40" Height="40" HorizontalAlignment="Center"
+                    VerticalAlignment="Center" Name="RemoveButton"
+                    ToolTipService.ToolTip="Удалить" Margin="5"
+                    Style="{StaticResource IconButton}" 
+                    Content="&#xE107;" Grid.Column="2" Click="RemoveButton_Click"/>
+
+        </Grid>
+
+        <ListView Name="PeopleList" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Name="PeopleFirstName" Text="{Binding firstName}" Grid.Column="0" Margin="10"/>
+                        <TextBlock Name="PeopleName" Text="{Binding Name}" Grid.Column="1" Margin="10"/>
+                        <TextBlock Name="PeopleLastName" Text="{Binding lastName}" Grid.Column="2" Margin="10"/>
+                        <TextBlock Name="PeopleAge" Text="{Binding Data}" Grid.Column="3" Margin="10"/>
+                        <TextBlock Name="PeopleTelephone" Text="{Binding Telephone}" Grid.Column="4" Margin="10"/>
+                        <TextBlock Name="PeopleEmail" Text="{Binding Email}" Grid.Column="5" Margin="10"/>
+                        <TextBlock Name="PeopleAdress" Text="{Binding Adress}" Grid.Column="6" Margin="10"/>
+                    </Grid>
+
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        <SplitView Name="MySplitView" Grid.Row ="1" OpenPaneLength="250" 
+                   CompactPaneLength="0" DisplayMode="CompactOverlay">
+            <SplitView.Pane>
+                <ScrollViewer>
+                    <StackPanel Background="AliceBlue">
+                        <TextBlock Text="Фамилия" FontSize="15" Margin="20,5,5,0"/>
+                        <TextBox Margin="10, 1, 20, 3" Name="firstNametxt"/>
+                        <TextBlock Text="Имя" FontSize="15" Margin="20,5,5,0"/>
+                        <TextBox Margin="10, 1, 20, 3" Name="Nametxt"/>
+                        <TextBlock Text="Отчество" FontSize="15" Margin="20,5,5,0"/>
+                        <TextBox Margin="10, 1, 20, 3" Name="LastNametxt"/>
+                        <TextBlock Text="Дата рождения" FontSize="15" Margin="20,5,5,0"/>
+                        <TextBox Margin="10, 1, 20, 3" Name="Agetxt"/>
+                        <TextBlock Text="Телефон" FontSize="15" Margin="20,5,5,0"/>
+                        <TextBox Margin="10, 1, 20, 3" Name="Telephonetxt"/>
+                        <TextBlock Text="Почта" FontSize="15" Margin="20,5,5,0"/>
+                        <TextBox Margin="10, 1, 20, 3" Name="Emailtxt"/>
+                        <TextBlock Text="Адресс" FontSize="15" Margin="20,5,5,0"/>
+                        <TextBox Margin="10, 1, 20, 3" Name="Adresstxt"/>
+
+                        <Button Name="btnAdd" HorizontalAlignment="Center" FontFamily="10"
+                            Width="150" Height="30" Margin="10" Content="Добавить"
+                            Click="btnAdd_Click"/>
+
+                        <TextBlock Text="Ввод имени обязателен" Margin="10" Name="txtWrong"
+                               FontSize="20" Foreground="Red" Visibility="Collapsed"
+                               TextWrapping="Wrap"/>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Frame Name="MyFrame" Height="300" Width="300"/>
+            </SplitView.Content>
+        </SplitView>
+
+        <SplitView Name="MySplitViewEdit" Grid.Row ="1" OpenPaneLength="250" 
+                   CompactPaneLength="0" DisplayMode="CompactOverlay">
+            <SplitView.Pane>
+                <ScrollViewer>
+                    <StackPanel Background="AliceBlue">
+                        <TextBlock Text="Фамилия" FontSize="18" Margin="20,5,5,0"/>
+                        <TextBox Margin="10, 1, 20, 3" Name="firstNametxt1"/>
+                        <TextBlock Text="Имя" FontSize="18" Margin="20,5,5,0"/>
+                        <TextBox Margin="10, 1, 20, 3" Name="Nametxt1"/>
+                        <TextBlock Text="Отчество" FontSize="18" Margin="20,5,5,0"/>
+                        <TextBox Margin="10, 1, 20, 3" Name="LastNametxt1"/>
+                        <TextBlock Text="Дата рождения" FontSize="18" Margin="20,5,5,0"/>
+                        <TextBox Margin="10, 1, 20, 3" Name="Agetxt1"/>
+                        <TextBlock Text="Телефон" FontSize="18" Margin="20,5,5,0"/>
+                        <TextBox Margin="10, 1, 20, 3" Name="Telephonetxt1"/>
+                        <TextBlock Text="Почта" FontSize="18" Margin="20,5,5,0"/>
+                        <TextBox Margin="10, 1, 20, 3" Name="Emailtxt1"/>
+                        <TextBlock Text="Адресс" FontSize="18" Margin="20,5,5,0"/>
+                        <TextBox Margin="10, 1, 20, 3" Name="Adresstxt1"/>
+
+                        <Button Name="btnEdit" HorizontalAlignment="Center" FontFamily="10"
+                            Width="150" Height="30" Margin="10" Content="Изменить"
+                            Click="btnEdit_Click"/>
+
+                        <TextBlock Text="Вы обязаны ввести любое поле" Margin="10" Name="txtWrong1"
+                               FontSize="20" Foreground="Red" Visibility="Collapsed"
+                               TextWrapping="Wrap"/>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </SplitView.Pane>
+        </SplitView>
+    </Grid>
+</Page>

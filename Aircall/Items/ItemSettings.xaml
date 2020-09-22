@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="Aircall.ItemSettings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Aircall"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel Margin="10" Grid.Column="1">
+                <ToggleSwitch Name="tgl_switch1" Margin="5"
+                          OffContent="Выкл" OnContent="Вкл"
+                          Toggled="tgl_switch1_Toggled"/>
+            </StackPanel>
+            <StackPanel Margin="10" Grid.Column="0">
+                <TextBlock Text="Пароль на контактах" TextWrapping="Wrap"/>
+            </StackPanel>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button Name="btn_DelPass" Content="Удалить пароль" Grid.Column="0"
+                        Margin="20" Width="150" Click="btn_DelPass_Click" Height="30"/>
+                <PasswordBox Grid.Column="2" Width="150" Height="30" HorizontalAlignment="Left"
+                     Margin="20" Visibility="Collapsed" Name="tbx_EditPass"
+                     PlaceholderText="Изменить пароль" KeyDown="tbx_EditPass_KeyDown"
+                         MaxLength="16"/>
+                <Button Name="btn_edit" Content="Изменить пароль" Grid.Row="0"
+                            Margin="20" Width="150" Click="btn_edit_Click"
+                        Grid.Column="1" Height="30"/>
+                <TextBlock Grid.Column="3" Text="Пароль успешно изменён!" 
+                               VerticalAlignment="Center" Margin="10, 5, 5, 5" FontSize="10"
+                               Foreground="Green" FontWeight="Bold" 
+                               Visibility="Collapsed" Name="tbl_Ok"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

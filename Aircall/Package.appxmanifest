@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  IgnorableNamespaces="uap mp">
+
+  <Identity
+    Name="056e4274-abbe-42d4-b45c-87a793e48a3d"
+    Publisher="CN=forar"
+    Version="1.0.0.0" />
+
+  <mp:PhoneIdentity PhoneProductId="056e4274-abbe-42d4-b45c-87a793e48a3d" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>Aircall</DisplayName>
+    <PublisherDisplayName>forar</PublisherDisplayName>
+    <Logo>Assets\A.I. Call Logo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="Aircall.App">
+      <uap:VisualElements
+        DisplayName="A.I.Call"
+        Square150x150Logo="Assets\A.I. Call Logo.png"
+        Square44x44Logo="Assets\A.I. Call Logo.png"
+        Description="Aircall"
+        BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\A.I. Call Logo (1240x600).png" Square71x71Logo="Assets\A.I. Call Logo.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="wide310x150Logo"/>
+            <uap:ShowOn Tile="square150x150Logo"/>
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile >
+        <uap:SplashScreen Image="Assets\ReadyLogo(1240x600).png"  BackgroundColor="white"/>
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <DeviceCapability Name="microphone"/>
+  </Capabilities>
+</Package>

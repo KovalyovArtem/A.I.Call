@@ -1,0 +1,29 @@
+﻿<Application
+    x:Class="Aircall.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Aircall">
+
+
+    <Application.Resources>
+        <Style TargetType="TextBlock" x:Key="ItemIcon">
+            <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Margin" Value="2 0 18 0" />
+        </Style>
+        <Style TargetType="TextBlock" x:Key="textMainButton">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+        <Style TargetType="Button" x:Key="IconButton">
+            <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+    </Application.Resources>
+
+
+</Application>
+
